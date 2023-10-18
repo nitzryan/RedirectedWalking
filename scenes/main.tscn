@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d46wrkgdeynk"]
+[gd_scene load_steps=9 format=3 uid="uid://d46wrkgdeynk"]
 
 [ext_resource type="Script" path="res://scripts/initialize-webxr.gd" id="1_wh60i"]
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="2_2bng5"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_nfy4j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_osj4q"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -46,10 +48,16 @@ shape = SubResource("BoxShape3D_trsr2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
 [node name="LeftController" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1, 0)
 tracker = &"left_hand"
 
+[node name="LeftHand" parent="XROrigin3D/LeftController" instance=ExtResource("2_2bng5")]
+
 [node name="RightController" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1, 0)
 tracker = &"right_hand"
+
+[node name="RightHand" parent="XROrigin3D/RightController" instance=ExtResource("3_nfy4j")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
