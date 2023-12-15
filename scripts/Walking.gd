@@ -44,7 +44,7 @@ func _process(delta):
 			rotAngle = -maxCurvature * magnitudeCorrection
 		var modifiedDelta = deltaPos.rotated(Vector3(0,1,0), rotAngle)
 		var originMovement = modifiedDelta - deltaPos
-		
+
 		print("Theta: " + str(theta))
 		print("Angle Positive: " + str(anglePositive))
 		#print("Delta Pos: " + str(deltaPos))

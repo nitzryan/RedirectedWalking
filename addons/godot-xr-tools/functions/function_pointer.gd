@@ -97,7 +97,6 @@ const SUPPRESS_MASK := 0b0000_0000_0100_0000_0000_0000_0000_0000
 ## Suppress mask
 @export_flags_3d_physics var suppress_mask : int = SUPPRESS_MASK: set = set_suppress_mask
 
-
 ## Current target node
 var target : Node3D = null
 
@@ -122,6 +121,7 @@ var _controller  : XRController3D
 # The currently active controller
 var _active_controller : XRController3D
 
+var menu_displayed = false
 
 ## Add support for is_xr_class on XRTools classes
 func is_xr_class(name : String) -> bool:
@@ -130,6 +130,7 @@ func is_xr_class(name : String) -> bool:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	%Viewport2Din3D.visible = false
 	# Do not initialise if in the editor
 	if Engine.is_editor_hint():
 		return
@@ -420,6 +421,8 @@ func _button_pressed() -> void:
 		target = $RayCast.get_collider()
 		last_collided_at = $RayCast.get_collision_point()
 		XRToolsPointerEvent.pressed(self, target, last_collided_at)
+		if target.get_name() == "NormalBtn":
+			%Viewport2Din3D.visible = false
 
 
 # Pointer-activation button released handler
@@ -438,7 +441,9 @@ func _on_button_pressed(p_button : String, controller : XRController3D) -> void:
 			_button_pressed()
 		else:
 			_active_controller = controller
-
+	if(p_button =="ax_button"):
+		menu_displayed = ! menu_displayed
+		%Viewport2Din3D.visible = menu_displayed
 
 # Button released handler
 func _on_button_released(p_button : String, _controller : XRController3D) -> void:
