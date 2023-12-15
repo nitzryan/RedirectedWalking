@@ -421,9 +421,6 @@ func _button_pressed() -> void:
 		target = $RayCast.get_collider()
 		last_collided_at = $RayCast.get_collision_point()
 		XRToolsPointerEvent.pressed(self, target, last_collided_at)
-		if target.get_name() == "NormalBtn":
-			%Viewport2Din3D.visible = false
-
 
 # Pointer-activation button released handler
 func _button_released() -> void:
@@ -442,7 +439,7 @@ func _on_button_pressed(p_button : String, controller : XRController3D) -> void:
 		else:
 			_active_controller = controller
 	if(p_button =="ax_button"):
-		menu_displayed = ! menu_displayed
+		menu_displayed = !menu_displayed
 		%Viewport2Din3D.visible = menu_displayed
 
 # Button released handler

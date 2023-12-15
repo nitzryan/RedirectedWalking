@@ -1,4 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5tnguynvof04"]
+[gd_scene load_steps=7 format=3 uid="uid://c5tnguynvof04"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_36trq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p22vt"]
 
@@ -11,6 +13,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ux0w5"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_36trq")
 
 [node name="Control" type="Control" parent="."]
 unique_name_in_owner = true
@@ -87,3 +90,6 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_fckkt")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ux0w5")
 text = "Mode 3
 "
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/NormalBtn" to="Control" method="_on_normal_btn_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/PassthroughBtn" to="." method="_on_passthrough_btn_pressed"]

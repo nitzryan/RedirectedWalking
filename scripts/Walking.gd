@@ -15,7 +15,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var o = %XROrigin3D
+	%Viewport2Din3D.rotation = %LeftController.global_rotation
+	%Viewport2Din3D.position = %LeftController.global_position 
+
 	#print(str(o.position))
 	# Apply Curvature Gain
 	# Amount user walked since last step
