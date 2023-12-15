@@ -57,5 +57,5 @@ func _process(delta):
 		# Perform rotation of XROrigin around the camera
 		var orig = %XROrigin3D
 		#orig.rotate(Vector3(0,1,0), -rotAngle * deltaPos.length() * PI / 180)
-		orig.translate(-originMovement)
+		orig.translate()
 	return
