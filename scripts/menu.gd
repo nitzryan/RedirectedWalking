@@ -1,15 +1,12 @@
 extends CanvasLayer
-@onready var ctrl = $Control
+var menu_displayed = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-
 
 func enable_passthrough() -> bool:
 	var xr_interface: XRInterface = XRServer.primary_interface
@@ -27,8 +24,22 @@ func enable_passthrough() -> bool:
 	return true
 
 func _on_normal_btn_pressed():
+	Menu.menu_displayed = false
+	self.get_parent().get_parent().visible = Menu.menu_displayed
+	self.get_parent().get_parent().set_process(Menu.menu_displayed)
 	var xr_interface: XRInterface = XRServer.primary_interface
 	xr_interface.stop_passthrough()
 	
 func _on_passthrough_btn_pressed():
+	Menu.menu_displayed =  false
+	self.get_parent().get_parent().visible = Menu.menu_displayed
+	self.get_parent().get_parent().set_process(Menu.menu_displayed)
 	enable_passthrough()
+
+
+func _on_mode_3_btn_pressed():
+	Menu.menu_displayed =  false
+	self.get_parent().get_parent().visible = Menu.menu_displayed
+	self.get_parent().get_parent().set_process(Menu.menu_displayed)
+	self.get_parent().get_parent().get_parent().get_node("Environment").rotate(Vector3.UP,0.1)
+	

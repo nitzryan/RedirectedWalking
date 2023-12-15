@@ -17,6 +17,9 @@ func _ready():
 func _process(delta):
 	%Viewport2Din3D.rotation = %LeftController.global_rotation
 	%Viewport2Din3D.position = %LeftController.global_position 
+	%Viewport2Din3D.position += %LeftController.transform.basis.y * 0.2
+	%Viewport2Din3D.position += %LeftController.transform.basis.x * -0.3
+	
 
 	#print(str(o.position))
 	# Apply Curvature Gain

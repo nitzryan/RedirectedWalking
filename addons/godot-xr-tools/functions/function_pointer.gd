@@ -121,7 +121,7 @@ var _controller  : XRController3D
 # The currently active controller
 var _active_controller : XRController3D
 
-var menu_displayed = false
+#var menu_displayed = Menu.menu_displayed
 
 ## Add support for is_xr_class on XRTools classes
 func is_xr_class(name : String) -> bool:
@@ -439,9 +439,9 @@ func _on_button_pressed(p_button : String, controller : XRController3D) -> void:
 		else:
 			_active_controller = controller
 	if(p_button =="ax_button"):
-		menu_displayed = !menu_displayed
-		%Viewport2Din3D.visible = menu_displayed
-
+		Menu.menu_displayed = !Menu.menu_displayed
+		%Viewport2Din3D.visible = Menu.menu_displayed
+		%Viewport2Din3D.set_process(Menu.menu_displayed)
 # Button released handler
 func _on_button_released(p_button : String, _controller : XRController3D) -> void:
 	if p_button == active_button_action and target:

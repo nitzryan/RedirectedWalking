@@ -91,5 +91,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ux0w5")
 text = "Mode 3
 "
 
-[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/NormalBtn" to="Control" method="_on_normal_btn_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/NormalBtn" to="." method="_on_normal_btn_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/PassthroughBtn" to="." method="_on_passthrough_btn_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Mode 3 Btn" to="." method="_on_mode_3_btn_pressed"]
