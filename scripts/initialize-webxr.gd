@@ -2,10 +2,10 @@ extends Node3D
 
 var webxr_interface
 var vr_supported = false
-
+var menu_dispalyed = false
 func _ready():
 	# We assume this node has a button as a child.
-	# This button is for the user to consent to entering immersive VR mode.
+	# This button is for the user to consent to entering immersive VR mode.s
 	$CanvasLayer/Button.pressed.connect(self._on_button_pressed)
 
 	webxr_interface = XRServer.find_interface("WebXR")
@@ -21,7 +21,6 @@ func _ready():
 		# (which we connected to the "session_supported" signal above) will
 		# be called sometime later to let us know if it's supported or not.
 		webxr_interface.is_session_supported("immersive-vr")
-
 func _webxr_session_supported(session_mode, supported):
 	if session_mode == 'immersive-vr':
 		vr_supported = supported
@@ -71,3 +70,4 @@ func _webxr_session_ended():
 
 func _webxr_session_failed(message):
 	OS.alert("Failed to initialize: " + message)
+
